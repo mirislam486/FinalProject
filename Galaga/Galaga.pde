@@ -1,21 +1,25 @@
-interface Displayable {
-  void display();
-}
+PImage bg;
 
-interface Moveable {
-  void move();
-}
-
-abstract class SpaceInvaders implements Displayable{
+abstract class SpaceInvaders{
+  int xcor, ycor; 
 }
   
-  public class playerShip extends SpaceInvaders implements Moveable{
+  public class playerShip extends SpaceInvaders{
   PImage img;
-  PImage bg;
-  int y;
+  int startx, starty;
+  
+    
+    playerShip(int x, int y){
+      this.startx = x;
+      this.starty = y; 
+    }
   
     void display(){
       img = loadImage("playerShip.PNG");
+      image(img, startx, starty, width/7, height/10); 
+    }
+    
+    void move(){
     }
   
   }
@@ -35,5 +39,5 @@ abstract class SpaceInvaders implements Displayable{
     if (y > height) {
       y = 0; 
     }
-    image(img, 160, 550, width/7, height/10);
+    playerShip player = new playerShip(160, 550);
   }
