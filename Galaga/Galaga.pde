@@ -1,4 +1,5 @@
 PImage bg;
+int y; 
 
 abstract class SpaceInvaders{
   int xcor, ycor; 
@@ -24,6 +25,14 @@ abstract class SpaceInvaders{
   
   }
 
+  
+  
+  
+  
+  
+  
+  
+  
   void setup() {
     size(360, 640);
     bg = loadImage("star.jpg");
@@ -40,4 +49,5 @@ abstract class SpaceInvaders{
       y = 0; 
     }
     playerShip player = new playerShip(160, 550);
+    player.display();
   }
