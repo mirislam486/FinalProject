@@ -20,8 +20,17 @@ abstract class SpaceInvaders{
       image(img, startx, starty, width/7, height/10); 
     }
     
-    void move(){
+   void move(){
+    if (keyPressed == true) {
+      if (keyCode == LEFT) {
+        startx -= 10;
+      } else if (keyCode == RIGHT) {
+        startx += 10;
+      } 
+    }else{
+      startx += 0;
     }
+  }
   
   }
 
@@ -50,4 +59,5 @@ abstract class SpaceInvaders{
     }
     playerShip player = new playerShip(160, 550);
     player.display();
+    player.move(); 
   }
