@@ -1,5 +1,10 @@
+interface Displayable {
+  void display();
+}
+
 PImage bg;
 int y; 
+int enemyX, enemyY;
 
 abstract class SpaceInvaders{
   int xcor, ycor; 
@@ -34,7 +39,7 @@ abstract class SpaceInvaders{
   
   }
   
-  public class Enemies extends SpaceInvaders{
+  public class Enemies extends SpaceInvaders implements Displayable{
   PImage img;
   int startx, starty;
   
@@ -45,7 +50,7 @@ abstract class SpaceInvaders{
   
     void display(){
         img = loadImage("enemy.png");
-        image(img, startx, starty, width/7, height/10); 
+        image(img, startx, starty, width/8, height/12); 
       }
   
   }
@@ -63,11 +68,22 @@ abstract class SpaceInvaders{
   
   
   
-  
-  
+  ArrayList<Displayable> spawnEnemies1;
+  ArrayList<Displayable> spawnEnemies2;
   void setup() {
+    spawnEnemies1 = new ArrayList<Displayable>();
+    spawnEnemies2 = new ArrayList<Displayable>();
     size(360, 640);
     bg = loadImage("star.jpg");
+    for(int x = 0; x < 5; x++){
+      Enemies e = new Enemies(enemyX + (x * 75), enemyY);
+      spawnEnemies1.add(e); 
+    }
+    
+    for(int x = 0; x < 4; x++){
+      Enemies e = new Enemies(enemyX + (x * 90), 50);
+      spawnEnemies2.add(e); 
+    }
   }
 
   void draw() {
@@ -82,5 +98,13 @@ abstract class SpaceInvaders{
     }
     playerShip player = new playerShip(160, 550);
     player.display();
-    player.move(); 
+    player.move();
+    
+    for(Displayable Enemies: spawnEnemies1){
+      Enemies.display(); 
+    }
+      
+    for(Displayable Enemies: spawnEnemies2){
+      Enemies.display(); 
+   }
   }
