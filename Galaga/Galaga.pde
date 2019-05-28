@@ -33,10 +33,33 @@ abstract class SpaceInvaders{
   }
   
   }
-
   
+  public class Enemies extends SpaceInvaders{
+  PImage img;
+  int startx, starty;
   
+    Enemies(int x, int y){
+        this.startx = x;
+        this.starty = y; 
+      }
   
+    void display(){
+        img = loadImage("enemy.png");
+        image(img, startx, starty, width/7, height/10); 
+      }
+  
+  }
+  
+  public class Bullets extends SpaceInvaders{
+  int startx, starty;
+  
+  Bullets(int x, int y){
+      this.startx = x;
+      this.starty = y; 
+  
+  }
+  
+  }
   
   
   
