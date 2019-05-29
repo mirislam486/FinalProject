@@ -4,8 +4,6 @@ float x=20, y=20, speed=0.5;
 void setup()
 {
   size(500, 500);
-  smooth();
-  // fill (color(222, 22, 22));
   noStroke();
   ellipseMode(RADIUS);
 }
@@ -30,9 +28,9 @@ void draw()
   fill (color(222, 22, 22)); 
   ellipse (x, y, radius, radius);    // body
   fill (color(22, 82, 22)); 
-  ellipse (x-4, y-4, 2, 2);  // the eye
 }
-// =========================================================
+
+
 void keyPressed()
 {
   if (key == CODED)
