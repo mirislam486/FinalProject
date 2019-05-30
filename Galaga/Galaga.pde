@@ -76,6 +76,8 @@ abstract class SpaceInvaders implements Moveable{
   
     Enemies(int x, int y){
         super(x, y); 
+        this.startx = x; 
+        this.starty = y; 
       }
   
     void display(){  
