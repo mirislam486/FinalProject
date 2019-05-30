@@ -1,5 +1,4 @@
 PImage bg;
-float x, y, dx = 1, dy; 
 int enemyX, enemyY;
 int enemySpeed, bulletSpeed; 
 
@@ -16,7 +15,15 @@ interface Moveable {
 
 
 abstract class SpaceInvaders implements Moveable{
-  int xcor, ycor; 
+  float x, y, dx, dy; 
+  //int xcor, ycor; 
+  
+  SpaceInvaders(x, y){
+    this.x = x;
+    this.y = y;
+  }
+  
+ // abstract void shoot(); 
 }
   
   public class playerShip extends SpaceInvaders{
@@ -25,8 +32,7 @@ abstract class SpaceInvaders implements Moveable{
   
     
     playerShip(int x, int y){
-      this.startx = x;
-      this.starty = y; 
+      super(x, y); 
     }
   
     void display(){
@@ -34,7 +40,9 @@ abstract class SpaceInvaders implements Moveable{
       image(img, startx, starty, width/7, height/10); 
     }
     
-   void move(){}
+   void move(){
+     
+   }
     
   
   }
@@ -72,17 +80,22 @@ abstract class SpaceInvaders implements Moveable{
   
   //=======================================================
   
-  public class Bullets extends SpaceInvaders{
+  public class Bullets extends SpaceInvaders implements Displayable{
   int startx, starty;
   
-  Bullets(int x, int y){
-      this.startx = x;
-      this.starty = y; 
+    Bullets(int x, int y){
+        this.startx = x;
+        this.starty = y; 
   
-  }
+    }
   
-  void move(){
-  }
+    void move(){
+    
+    }
+  
+    void display(){
+      ellipse(enemyX, enemyY, 20, 30);
+    }
   
   }
   
@@ -93,11 +106,13 @@ abstract class SpaceInvaders implements Moveable{
   ArrayList<Displayable> spawnEnemies1;
   ArrayList<Displayable> spawnEnemies2;
   ArrayList<Moveable> moveEnemies;
+  playerShip player; 
   
   
   
   
   void setup() {
+    player = new playerShip(160, 550);
     frameRate(4);
     spawnEnemies1 = new ArrayList<Displayable>();
     spawnEnemies2 = new ArrayList<Displayable>();
@@ -123,16 +138,8 @@ abstract class SpaceInvaders implements Moveable{
 
   void draw() {
     background(bg);
-  
-    stroke(226, 204, 0);
-    line(0, y, width, y);
-  
-    //y++;
-    //if (y > height) {
-    //  y = 0; 
-    //}
-    playerShip player = new playerShip(160, 550);
     player.display();
+    
     player.move();
     
     for(Displayable Enemies: spawnEnemies1){
