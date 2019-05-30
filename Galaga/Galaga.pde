@@ -28,7 +28,8 @@ abstract class SpaceInvaders implements Moveable{
   
   public class playerShip extends SpaceInvaders{
   PImage img;
-  int startx, starty;
+  float dx, dy;
+  //int startx, starty;
   
     
     playerShip(int x, int y){
@@ -37,7 +38,7 @@ abstract class SpaceInvaders implements Moveable{
   
     void display(){
       img = loadImage("playerShip.PNG");
-      image(img, startx, starty, width/7, height/10); 
+      image(img, x, y, width/7, height/10); 
     }
     
    void move(){
@@ -51,11 +52,11 @@ abstract class SpaceInvaders implements Moveable{
   
   public class Enemies extends SpaceInvaders implements Displayable{
   PImage img;
-  int startx, starty;
+  float dx, dy;
+  //int startx, starty;
   
     Enemies(int x, int y){
-        this.startx = x;
-        this.starty = y; 
+        super(x, y); 
       }
   
     void display(){  
@@ -81,12 +82,11 @@ abstract class SpaceInvaders implements Moveable{
   //=======================================================
   
   public class Bullets extends SpaceInvaders implements Displayable{
-  int startx, starty;
+  //int startx, starty;
+  float dx, dy;
   
     Bullets(int x, int y){
-        this.startx = x;
-        this.starty = y; 
-  
+        super(x, y); 
     }
   
     void move(){
